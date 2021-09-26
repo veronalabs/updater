@@ -1,0 +1,20 @@
+{
+    "name": "veronalabs/updater",
+    "description": "A custom update checker for WordPress plugins and themes based on yahnis-elsts/plugin-update-checker and own private license server updater.",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Mostafa Soufi",
+            "email": "mostafa@veronalabs.com"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "yahnis-elsts/plugin-update-checker": "^4.11"
+    },
+    "autoload": {
+        "psr-4": {
+            "VeronaLabs\\Updater\\": "src"
+        }
+    }
+}
