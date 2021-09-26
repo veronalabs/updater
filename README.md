@@ -2,7 +2,12 @@
 A custom update checker for WordPress plugins and themes based on yahnis-elsts/plugin-update-checker and own private license server updater.
 
 ### Installation
+Install by Composer
+```
+composer require veronalabs/updater
+```
 
+Then, initial the `UpdaterChecker` by the required parameters
 ```php
 use VeronaLabs\Updater;
 
