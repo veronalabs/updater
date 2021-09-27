@@ -46,7 +46,7 @@ class UpdaterChecker
         // Check Product license is validate
         if ($wp_error === false) {
             if (empty($this->license_key) or $this->license_key == '') {
-                add_action("after_plugin_row", [$this, 'plugin_update_message'], 10, 3);
+                add_action("after_plugin_row", [$this, 'showPluginRowNotice'], 10, 3);
             } else {
 
                 // Check Plugin request only in plugins.php Wordpress Admin area
