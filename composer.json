@@ -16,7 +16,5 @@
         "psr-4": {
             "VeronaLabs\\Updater\\": "src"
         }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    }
 }
