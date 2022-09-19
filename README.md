@@ -9,9 +9,7 @@ composer require veronalabs/updater
 
 Then, initial the `UpdaterChecker` by the required parameters
 ```php
-use VeronaLabs\Updater;
-
-new UpdaterChecker(array(
+\VeronaLabs\Updater\UpdaterChecker::getInstance(array(
     'plugin_slug'  => 'plugin-slug',
     'website_url'  => 'https://plugin-url.com',
     'license_key'  => 'license-key',
