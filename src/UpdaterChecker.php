@@ -159,7 +159,28 @@ class UpdaterChecker
     public function showPluginRowNotice($plugin_file, $plugin_data, $status)
     {
         if ($plugin_file == $this->pluginSlug . '/' . $this->pluginSlug . '.php') {
-            echo '<tr style="background: #fcf9e8 !important;"><td>&nbsp;</td><td colspan="3">' . sprintf(__('<i>Automatic update is unavailable for the %s plugin.</i><br>To enable updates, please enter your license key on the <a href="%s">setting page</a> If you don\'t have a license key, please see <a href="%s">details & pricing</a>', $this->pluginSlug), $plugin_data['Name'], $this->settingPageUrl, $this->websiteUrl) . '</td></tr>';
+            // Get the columns for this table so we can calculate the colspan attribute.
+            $screen  = get_current_screen();
+            $columns = get_column_headers($screen);
+
+            // If something went wrong with retrieving the columns, default to 3 for colspan.
+            $colspan = !is_countable($columns) ? 3 : count($columns);
+
+            // phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+            ?>
+            <tr class='plugin-update-tr update active' data-plugin='<?php echo esc_attr($plugin_file); ?>' data-plugin-row-type='feature-incomp-warn'>
+                <td colspan='<?php echo esc_attr($colspan); ?>' class='plugin-update'>
+                    <div class='notice inline notice-warning notice-alt'>
+                        <p>
+                            <?php echo sprintf(__('<i>Automatic update is unavailable for the %s plugin.</i>', $this->pluginSlug), esc_attr($plugin_data['Name'])); ?>
+                            <br/>
+                            <?php echo sprintf(__('To enable automatic updates with new features and security improvements, input your license key in <a href="%s">Settings page</a>. Don\'t have a license key? Review our <a href="%s">details & pricing</a>.', $this->pluginSlug), esc_url($this->settingPageUrl), esc_url($this->websiteUrl)); ?>
+                        </p>
+                    </div>
+                </td>
+            </tr>
+            <?php
+            // phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
         }
     }
 }
